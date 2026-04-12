@@ -2,11 +2,11 @@
 const numbers = [40, 100, 1, 5, 25, 10];
 const fruits = ["Banana", "apple", "Cherry", "date"];
 
-const sortedNumber = numbers.sort((a, b) => b - a); // DescendingOder // InPlaceSorting
+const sortedNumber = numbers.sort((a, b) => b - a); // DescendingOrder // InPlaceSorting
 // console.log(numbers);
 // console.log(sortedNumber);
 
-fruits.sort((a, b) => a.localeCompare(b)); // StringSortingInAlphabeticalOder
+fruits.sort((a, b) => a.localeCompare(b)); // StringSortingInAlphabeticalOrder
 // console.log(fruits);
 
 // NestedArrayFlat
