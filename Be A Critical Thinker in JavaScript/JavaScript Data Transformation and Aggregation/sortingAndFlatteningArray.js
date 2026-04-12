@@ -24,9 +24,3 @@ const tagsFromPosts = [
 
 const filterTags = [...new Set(tagsFromPosts.flat())];
 console.log(filterTags);
-
-// Some
-const currentUserRoles = ["user", "editor"];
-const featureAccessRoles = ["admin", "manager"];
-
-// Array.from()
