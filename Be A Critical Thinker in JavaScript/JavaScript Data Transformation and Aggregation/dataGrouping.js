@@ -1,4 +1,4 @@
-//* GroupingAndAggregatingData
+//* GroupingData
 
 //? input
 const surveyResponses = [
