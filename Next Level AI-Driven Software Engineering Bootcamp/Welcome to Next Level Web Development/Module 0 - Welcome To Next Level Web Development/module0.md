@@ -1,0 +1,8 @@
+# Notes:
+
+- Promise:
+  I'll try my best to become an AI - Driven Software Engineer, In-Sha-Allah!
+
+* Quotes:
+  - 1. "Not better than anyone but different from the rest. Focus on own growth, not others success."
+  - 2. "Growth happens when you keep going even on the days your heart feels tired, choosing discipline over comfort and hope over fear. Consistency beats talent when talent doesn't stay consistent."
