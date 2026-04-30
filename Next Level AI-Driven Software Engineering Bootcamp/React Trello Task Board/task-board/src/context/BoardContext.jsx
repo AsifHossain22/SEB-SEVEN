@@ -1,7 +1,6 @@
 // src/context/BoardContext.jsx
 
 // GlobalStateManagementUsingReactContextAPI
-
 import React, {
   createContext,
   useContext,
