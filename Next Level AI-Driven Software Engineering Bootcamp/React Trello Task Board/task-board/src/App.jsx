@@ -5,7 +5,7 @@ function App() {
     <>
       {/* Header */}
       <header>
-        <h1 class="text-3xl font-bold underline">Task Board</h1>
+        <h1 className="text-3xl font-bold underline">Task Board</h1>
       </header>
 
       {/* MainContent */}
