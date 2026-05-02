@@ -1,0 +1,289 @@
+/* src/index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSSCustomProperties - (Variables) */
+:root {
+  --color-brand: #3b82f6;
+  --color-brand-dark: #2563eb;
+  --color-brand-light: #93c5fd;
+
+  --bg-app: #0f172a;
+  --bg-nav: #0f172aee;
+  --bg-list: #1e293b;
+  --bg-card: #283548;
+  --bg-card-hover: #2f3f54;
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+
+  --border-subtle: #1e293b;
+  --border-default: #334155;
+  --border-brand: #3b82f6;
+
+  --label-red: #ef4444;
+  --label-orange: #f97316;
+  --label-yellow: #eab308;
+  --label-green: #22c55e;
+  --label-blue: #3b82f6;
+  --label-purple: #a855f7;
+  --label-pink: #ec4899;
+  --label-teal: #14b8a6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0; /* ডিফল্ট মার্জিন রিমুভ | Remove default margin */
+  padding: 0; /* ডিফল্ট প্যাডিং রিমুভ | Remove default padding */
+  font-family:
+    "Plus Jakarta Sans", sans-serif; /* ফন্ট ফ্যামিলি | Font family */
+  background-color: var(--bg-app); /* ব্যাকগ্রাউন্ড কালার | Background color */
+  color: var(--text-primary); /* টেক্সট কালার | Text color */
+  min-height: 100vh; /* মিনিমাম হাইট | Minimum height */
+  overflow-x: hidden; /* হরিজন্টাল স্ক্রোল লুকানো | Hide horizontal scroll */
+}
+
+/* ========== কাস্টম স্ক্রোলবার ========== */
+/* ========== Custom Scrollbar ========== */
+::-webkit-scrollbar {
+  width: 6px; /* স্ক্রোলবার প্রস্থ | Scrollbar width */
+  height: 6px; /* হরিজন্টাল স্ক্রোলবার উচ্চতা | Horizontal scrollbar height */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* ট্র্যাক ট্রান্সপারেন্ট | Track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155; /* থাম্ব কালার | Thumb color */
+  border-radius: 999px; /* রাউন্ডেড থাম্ব | Rounded thumb */
+  transition: background 0.2s; /* স্মুথ ট্রানজিশন | Smooth transition */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569; /* হোভারে উজ্জ্বল | Lighter on hover */
+}
+
+/* ========== ইনপুট ফিল্ড কাস্টমাইজেশন ========== */
+/* ========== Input Field Customization ========== */
+input,
+textarea {
+  outline: none; /* ডিফল্ট আউটলাইন রিমুভ | Remove default outline */
+  font-family: inherit; /* প্যারেন্ট ফন্ট ইনহেরিট | Inherit parent font */
+  color: var(--text-primary); /* টেক্সট কালার | Text color */
+}
+
+/* ========== কাস্টম ইউটিলিটি ক্লাস ========== */
+/* ========== Custom Utility Classes ========== */
+
+/* গ্লাস মরফিজম ইফেক্ট | Glass morphism effect */
+.glass {
+  background: rgba(
+    30,
+    41,
+    59,
+    0.7
+  ); /* সেমি-ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড | Semi-transparent bg */
+  backdrop-filter: blur(16px); /* ব্লার ইফেক্ট | Blur effect */
+  -webkit-backdrop-filter: blur(16px); /* Safari সাপোর্ট | Safari support */
+  border: 1px solid rgba(51, 65, 85, 0.5); /* সূক্ষ্ম বর্ডার | Subtle border */
+}
+
+/* ড্র্যাগিং অবস্থায় কার্ড স্টাইল | Card style while dragging */
+.card-dragging {
+  opacity: 0.6; /* স্বচ্ছতা কমানো | Reduce opacity */
+  transform: rotate(2deg) scale(1.02); /* হালকা ঘোরানো ও বড় করা | Slight rotate & scale */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* গভীর শ্যাডো | Deep shadow */
+  cursor: grabbing; /* গ্র্যাবিং কার্সার | Grabbing cursor */
+}
+
+/* ড্রপ জোন হাইলাইট | Drop zone highlight */
+.drop-target {
+  background: rgba(59, 130, 246, 0.08); /* হালকা ব্লু টিন্ট | Light blue tint */
+  border: 2px dashed rgba(59, 130, 246, 0.4); /* ড্যাশড ব্লু বর্ডার | Dashed blue border */
+}
+
+/* লেবেল পিল স্টাইল | Label pill styles */
+.label-pill {
+  display: inline-block;
+  height: 8px;
+  width: 32px;
+  border-radius: 999px; /* পিল শেপ | Pill shape */
+  flex-shrink: 0;
+}
+
+/* কার্ড অ্যানিমেশন | Card entrance animation */
+.card-enter {
+  animation: card-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; /* স্প্রিং ইজিং | Spring easing */
+}
+
+@keyframes card-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-4px); /* ছোট থেকে শুরু | Start small */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0); /* স্বাভাবিক সাইজে শেষ | End at normal size */
+  }
+}
+
+/* মোডাল ওভারলে | Modal overlay */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.7); /* গাঢ় ওভারলে | Dark overlay */
+  backdrop-filter: blur(4px); /* ব্লার ব্যাকগ্রাউন্ড | Blur background */
+}
+
+/* ফোকাস রিং কাস্টমাইজেশন | Focus ring customization */
+.focus-ring:focus {
+  outline: 2px solid var(--color-brand); /* ব্র্যান্ড কালার ফোকাস | Brand color focus */
+  outline-offset: 2px; /* ফোকাস রিংয়ের অফসেট | Focus ring offset */
+}
+
+/* লিস্ট হেডার ইনপুট | List header input */
+.list-title-input {
+  background: transparent; /* ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড | Transparent background */
+  border: 2px solid transparent; /* ইনভিজিবল বর্ডার | Invisible border */
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-weight: 600; /* বোল্ড টেক্সট | Bold text */
+  font-size: 0.9rem;
+  width: 100%;
+  transition: border-color 0.15s; /* স্মুথ ট্রানজিশন | Smooth transition */
+}
+
+.list-title-input:focus {
+  border-color: var(
+    --border-brand
+  ); /* ফোকাসে ব্র্যান্ড বর্ডার | Brand border on focus */
+  background: rgba(0, 0, 0, 0.2); /* হালকা ব্যাকগ্রাউন্ড | Light background */
+}
+
+/* টেক্সটএরিয়া অটো রিসাইজ | Textarea auto-resize */
+.auto-resize {
+  resize: none; /* ম্যানুয়াল রিসাইজ বন্ধ | Disable manual resize */
+  overflow: hidden; /* স্ক্রোলবার লুকানো | Hide scrollbar */
+  min-height: 60px; /* মিনিমাম হাইট | Minimum height */
+}
+
+/* বোর্ড ব্যাকগ্রাউন্ড গ্রিড প্যাটার্ন | Board background grid pattern */
+.board-bg {
+  background-color: var(--bg-app);
+  background-image:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(59, 130, 246, 0.15),
+      transparent
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(168, 85, 247, 0.08),
+      transparent 50%
+    );
+}
+
+/* স্ক্রোলেবল বোর্ড কন্টেইনার | Scrollable board container */
+.board-scroll {
+  overflow-x: auto; /* হরিজন্টাল স্ক্রোল | Horizontal scroll */
+  overflow-y: hidden; /* ভার্টিকাল স্ক্রোল বন্ধ | No vertical scroll */
+  padding-bottom: 12px; /* বটম প্যাডিং | Bottom padding */
+  /* স্ক্রোলবার লুকানো কিন্তু স্ক্রোলযোগ্য রাখা | Hide scrollbar but keep scrollable */
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+/* প্রাইমারি বাটন | Primary button */
+.btn-primary {
+  background: var(--color-brand);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease; /* স্মুথ ট্রানজিশন | Smooth transition */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-dark); /* হোভারে ডার্ক কালার | Dark on hover */
+  transform: translateY(-1px); /* হালকা উপরে উঠবে | Slight lift */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); /* গ্লো ইফেক্ট | Glow effect */
+}
+
+.btn-primary:active {
+  transform: translateY(0); /* ক্লিকে নামবে | Press down on click */
+}
+
+/* সেকেন্ডারি/ঘোস্ট বাটন | Secondary/ghost button */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-ghost:hover {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.08
+  ); /* হালকা হোভার ব্যাকগ্রাউন্ড | Light hover background */
+  color: var(--text-primary); /* উজ্জ্বল টেক্সট | Lighter text */
+}
+
+/* টোস্ট নোটিফিকেশন | Toast notification */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+  }
+}
+
+.toast-enter {
+  animation: toast-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.toast-exit {
+  animation: toast-out 0.2s ease-in forwards;
+}
