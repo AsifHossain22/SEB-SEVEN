@@ -10,7 +10,7 @@
   --color-brand-dark: #2563eb;
   --color-brand-light: #93c5fd;
 
-  --bg-app: #0f172a;
+  --bg-primary: #0f172a;
   --bg-nav: #0f172aee;
   --bg-list: #1e293b;
   --bg-card: #283548;
@@ -48,77 +48,60 @@ html {
 }
 
 body {
-  margin: 0; /* ডিফল্ট মার্জিন রিমুভ | Remove default margin */
-  padding: 0; /* ডিফল্ট প্যাডিং রিমুভ | Remove default padding */
-  font-family:
-    "Plus Jakarta Sans", sans-serif; /* ফন্ট ফ্যামিলি | Font family */
-  background-color: var(--bg-app); /* ব্যাকগ্রাউন্ড কালার | Background color */
-  color: var(--text-primary); /* টেক্সট কালার | Text color */
-  min-height: 100vh; /* মিনিমাম হাইট | Minimum height */
-  overflow-x: hidden; /* হরিজন্টাল স্ক্রোল লুকানো | Hide horizontal scroll */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-/* ========== কাস্টম স্ক্রোলবার ========== */
-/* ========== Custom Scrollbar ========== */
+/* CustomScrollbar */
 ::-webkit-scrollbar {
-  width: 6px; /* স্ক্রোলবার প্রস্থ | Scrollbar width */
-  height: 6px; /* হরিজন্টাল স্ক্রোলবার উচ্চতা | Horizontal scrollbar height */
+  width: 6px;
+  height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: transparent; /* ট্র্যাক ট্রান্সপারেন্ট | Track transparent */
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #334155; /* থাম্ব কালার | Thumb color */
-  border-radius: 999px; /* রাউন্ডেড থাম্ব | Rounded thumb */
-  transition: background 0.2s; /* স্মুথ ট্রানজিশন | Smooth transition */
+  background: #334155;
+  border-radius: 999px;
+  transition: background 0.2s;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569; /* হোভারে উজ্জ্বল | Lighter on hover */
+  background: #475569;
 }
 
-/* ========== ইনপুট ফিল্ড কাস্টমাইজেশন ========== */
-/* ========== Input Field Customization ========== */
+/* InputFieldCustomization  */
 input,
 textarea {
-  outline: none; /* ডিফল্ট আউটলাইন রিমুভ | Remove default outline */
-  font-family: inherit; /* প্যারেন্ট ফন্ট ইনহেরিট | Inherit parent font */
-  color: var(--text-primary); /* টেক্সট কালার | Text color */
+  outline: none;
+  font-family: inherit;
+  color: var(--text-primary);
 }
 
-/* ========== কাস্টম ইউটিলিটি ক্লাস ========== */
-/* ========== Custom Utility Classes ========== */
-
-/* গ্লাস মরফিজম ইফেক্ট | Glass morphism effect */
+/* CustomClasses */
 .glass {
-  background: rgba(
-    30,
-    41,
-    59,
-    0.7
-  ); /* সেমি-ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড | Semi-transparent bg */
-  backdrop-filter: blur(16px); /* ব্লার ইফেক্ট | Blur effect */
-  -webkit-backdrop-filter: blur(16px); /* Safari সাপোর্ট | Safari support */
-  border: 1px solid rgba(51, 65, 85, 0.5); /* সূক্ষ্ম বর্ডার | Subtle border */
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
 }
 
-/* ড্র্যাগিং অবস্থায় কার্ড স্টাইল | Card style while dragging */
 .card-dragging {
-  opacity: 0.6; /* স্বচ্ছতা কমানো | Reduce opacity */
-  transform: rotate(2deg) scale(1.02); /* হালকা ঘোরানো ও বড় করা | Slight rotate & scale */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* গভীর শ্যাডো | Deep shadow */
-  cursor: grabbing; /* গ্র্যাবিং কার্সার | Grabbing cursor */
+  opacity: 0.6;
+  transform: rotate(2deg) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  cursor: grabbing;
 }
 
-/* ড্রপ জোন হাইলাইট | Drop zone highlight */
 .drop-target {
-  background: rgba(59, 130, 246, 0.08); /* হালকা ব্লু টিন্ট | Light blue tint */
-  border: 2px dashed rgba(59, 130, 246, 0.4); /* ড্যাশড ব্লু বর্ডার | Dashed blue border */
+  background: rgba(59, 130, 246, 0.08);
+  border: 2px dashed rgba(59, 130, 246, 0.4);
 }
 
-/* লেবেল পিল স্টাইল | Label pill styles */
 .label-pill {
   display: inline-block;
   height: 8px;
@@ -127,63 +110,60 @@ textarea {
   flex-shrink: 0;
 }
 
-/* কার্ড অ্যানিমেশন | Card entrance animation */
+/* CardEntranceAnimation */
 .card-enter {
-  animation: card-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; /* স্প্রিং ইজিং | Spring easing */
+  animation: card-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes card-pop {
   from {
     opacity: 0;
-    transform: scale(0.9) translateY(-4px); /* ছোট থেকে শুরু | Start small */
+    transform: scale(0.9) translateY(-4px);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0); /* স্বাভাবিক সাইজে শেষ | End at normal size */
+    transform: scale(1) translateY(0);
   }
 }
 
-/* মোডাল ওভারলে | Modal overlay */
+/* ModalOverlay */
 .modal-overlay {
-  background: rgba(0, 0, 0, 0.7); /* গাঢ় ওভারলে | Dark overlay */
-  backdrop-filter: blur(4px); /* ব্লার ব্যাকগ্রাউন্ড | Blur background */
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
 }
 
-/* ফোকাস রিং কাস্টমাইজেশন | Focus ring customization */
+/* FocusRingCustomization */
 .focus-ring:focus {
-  outline: 2px solid var(--color-brand); /* ব্র্যান্ড কালার ফোকাস | Brand color focus */
-  outline-offset: 2px; /* ফোকাস রিংয়ের অফসেট | Focus ring offset */
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
 }
 
-/* লিস্ট হেডার ইনপুট | List header input */
+/* ListHeaderInput */
 .list-title-input {
-  background: transparent; /* ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড | Transparent background */
-  border: 2px solid transparent; /* ইনভিজিবল বর্ডার | Invisible border */
+  background: transparent;
+  border: 2px solid transparent;
   border-radius: 6px;
   padding: 2px 6px;
-  font-weight: 600; /* বোল্ড টেক্সট | Bold text */
+  font-weight: 600;
   font-size: 0.9rem;
   width: 100%;
-  transition: border-color 0.15s; /* স্মুথ ট্রানজিশন | Smooth transition */
+  transition: border-color 0.15s;
 }
-
 .list-title-input:focus {
-  border-color: var(
-    --border-brand
-  ); /* ফোকাসে ব্র্যান্ড বর্ডার | Brand border on focus */
-  background: rgba(0, 0, 0, 0.2); /* হালকা ব্যাকগ্রাউন্ড | Light background */
+  border-color: var(--border-brand);
+  background: rgba(0, 0, 0, 0.2);
 }
 
-/* টেক্সটএরিয়া অটো রিসাইজ | Textarea auto-resize */
+/* TextareaAutoResize */
 .auto-resize {
-  resize: none; /* ম্যানুয়াল রিসাইজ বন্ধ | Disable manual resize */
-  overflow: hidden; /* স্ক্রোলবার লুকানো | Hide scrollbar */
-  min-height: 60px; /* মিনিমাম হাইট | Minimum height */
+  resize: none;
+  overflow: hidden;
+  min-height: 60px;
 }
 
-/* বোর্ড ব্যাকগ্রাউন্ড গ্রিড প্যাটার্ন | Board background grid pattern */
+/* BoardBackground */
 .board-bg {
-  background-color: var(--bg-app);
+  background-color: var(--bg-primary);
   background-image:
     radial-gradient(
       ellipse 80% 50% at 50% -20%,
@@ -197,17 +177,16 @@ textarea {
     );
 }
 
-/* স্ক্রোলেবল বোর্ড কন্টেইনার | Scrollable board container */
+/* ScrollableBoardContainer */
 .board-scroll {
-  overflow-x: auto; /* হরিজন্টাল স্ক্রোল | Horizontal scroll */
-  overflow-y: hidden; /* ভার্টিকাল স্ক্রোল বন্ধ | No vertical scroll */
-  padding-bottom: 12px; /* বটম প্যাডিং | Bottom padding */
-  /* স্ক্রোলবার লুকানো কিন্তু স্ক্রোলযোগ্য রাখা | Hide scrollbar but keep scrollable */
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
   scrollbar-width: thin;
   scrollbar-color: #334155 transparent;
 }
 
-/* প্রাইমারি বাটন | Primary button */
+/* PrimaryButton */
 .btn-primary {
   background: var(--color-brand);
   color: white;
@@ -217,23 +196,21 @@ textarea {
   font-size: 0.875rem;
   border: none;
   cursor: pointer;
-  transition: all 0.15s ease; /* স্মুথ ট্রানজিশন | Smooth transition */
+  transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
-
 .btn-primary:hover {
-  background: var(--color-brand-dark); /* হোভারে ডার্ক কালার | Dark on hover */
-  transform: translateY(-1px); /* হালকা উপরে উঠবে | Slight lift */
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); /* গ্লো ইফেক্ট | Glow effect */
+  background: var(--color-brand-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
-
 .btn-primary:active {
-  transform: translateY(0); /* ক্লিকে নামবে | Press down on click */
+  transform: translateY(0);
 }
 
-/* সেকেন্ডারি/ঘোস্ট বাটন | Secondary/ghost button */
+/* SecondaryGhostButton */
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
@@ -247,18 +224,12 @@ textarea {
   align-items: center;
   gap: 6px;
 }
-
 .btn-ghost:hover {
-  background: rgba(
-    255,
-    255,
-    255,
-    0.08
-  ); /* হালকা হোভার ব্যাকগ্রাউন্ড | Light hover background */
-  color: var(--text-primary); /* উজ্জ্বল টেক্সট | Lighter text */
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
 }
 
-/* টোস্ট নোটিফিকেশন | Toast notification */
+/* ToastNotification */
 @keyframes toast-in {
   from {
     opacity: 0;
