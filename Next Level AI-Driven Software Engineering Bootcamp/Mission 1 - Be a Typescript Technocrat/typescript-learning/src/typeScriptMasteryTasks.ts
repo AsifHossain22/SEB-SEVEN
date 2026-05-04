@@ -93,3 +93,11 @@ const task3result2 = getZipCode(user2);
 console.log(
   `Task 3 - Result 1: ${task3result1}, Task 3 - Result 2: ${task3result2}`,
 );
+
+//? Task 4: Type Assertion
+
+let secretValue: unknown = "typescript is awesome";
+
+let upperValue = (secretValue as string).toUpperCase();
+
+console.log(upperValue);
