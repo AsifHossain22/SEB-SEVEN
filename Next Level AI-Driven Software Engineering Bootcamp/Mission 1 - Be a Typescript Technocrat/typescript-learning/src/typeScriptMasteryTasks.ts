@@ -1,4 +1,4 @@
-//* Task 1: The "Optional" Shopping Cart
+//? Task 1: The "Optional" Shopping Cart
 
 type CartItem = {
   name: string;
@@ -27,7 +27,7 @@ console.log(
   `Task 1 - Result 1: ${task1result1}, Task 2 - Result 2: ${task1result2}`,
 );
 
-//* Task 2: The "Optional" Shopping Cart
+//? Task 2: Merging User Profiles
 
 type Person = { name: string; age: number };
 type JobDetails = { role: string; salary: number };
@@ -56,4 +56,40 @@ const task2result2 = getProfile(employee2);
 
 console.log(
   `Task 2 - Result 1: ${task2result1}, Task 2 - Result 2: ${task2result2}`,
+);
+
+//? Task 3: The "Safe" Data Fetcher
+
+type UserResponse = {
+  info?: {
+    address?: {
+      zipCode?: string;
+    };
+  };
+};
+
+const user1 = {
+  info: {
+    address: {
+      zipCode: "00000",
+    },
+  },
+};
+
+const user2 = {
+  info: {
+    address: {
+      zipCode: "11111",
+    },
+  },
+};
+
+function getZipCode(user: UserResponse): string {
+  return user.info?.address?.zipCode ?? "00000";
+}
+const task3result1 = getZipCode(user1);
+const task3result2 = getZipCode(user2);
+
+console.log(
+  `Task 3 - Result 1: ${task3result1}, Task 3 - Result 2: ${task3result2}`,
 );
