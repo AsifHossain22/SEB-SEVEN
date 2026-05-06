@@ -69,3 +69,21 @@ const item: TProduct = {
     zipCode: "00000",
   },
 };
+
+//* TypeUnion
+type TPaymentMethod = "BKash" | "Rocket" | "Nagad" | "Brac Bank"; //
+
+let payment: TPaymentMethod = "BKash";
+
+//* TypeIntersection
+type TUser = {
+  name: string;
+};
+type TSeller = TUser & {
+  shopName: string;
+};
+
+const SellerName: TSeller = {
+  name: "Rahim",
+  shopName: "Rahim's Store",
+};
