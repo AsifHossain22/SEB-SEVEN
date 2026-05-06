@@ -26,7 +26,7 @@ function voidFunction(): void {
   // console.log("This is VOID");
 }
 
-//* Function
+//* FunctionType
 function calculateTotal(price: number, quantity: number) {
   return price * quantity;
 }
@@ -50,3 +50,22 @@ const buyer = {
 
 const { name, contactNumber } = buyer;
 // console.log(`Name: ${name} & Contact Number: ${contactNumber}`);
+
+//* Types - TypeAlias
+type TProduct = {
+  productName: string;
+  productPrice: number;
+  productManufacturing: {
+    location: "UAE"; // StringLiteral
+    zipCode: string;
+  };
+};
+
+const item: TProduct = {
+  productName: "Water Bottle",
+  productPrice: 30,
+  productManufacturing: {
+    location: "UAE", // StringLiteral
+    zipCode: "00000",
+  },
+};
