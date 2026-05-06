@@ -1,4 +1,4 @@
-// Polymorphism - OOP
+//* Polymorphism - OOP - 2
 
 class Person {
   getSleep() {

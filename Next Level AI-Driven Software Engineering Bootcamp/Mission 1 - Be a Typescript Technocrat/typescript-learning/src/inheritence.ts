@@ -1,3 +1,5 @@
+//* Inheritance - OOP - 1
+
 class Parent {
   name: string; // Common
   age: number; // Common
