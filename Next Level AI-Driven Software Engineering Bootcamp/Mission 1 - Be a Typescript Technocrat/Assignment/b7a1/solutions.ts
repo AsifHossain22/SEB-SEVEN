@@ -60,3 +60,31 @@ const book: IBook = {
 
 const bookTypescript = toggleReadStatus(book);
 console.log(bookTypescript);
+
+//? Problem - 6
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+class Student extends Person {
+  grade: string;
+
+  constructor(name: string, age: number, grade: string) {
+    super(name, age);
+
+    this.grade = grade;
+  }
+
+  getDetails() {
+    return `Student Name: ${this.name}, Student Age: ${this.age}, Student Grade: ${this.grade}`;
+  }
+}
+
+const studentDetails = new Student("Alice", 20, "A");
+console.log(studentDetails.getDetails());
