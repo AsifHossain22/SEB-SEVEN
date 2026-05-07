@@ -14,3 +14,18 @@ function reverseString(wordString: string): string {
 }
 const returnReverseString = reverseString("typescript");
 console.log(returnReverseString);
+
+//? Problem - 3
+type TStringOrNumber = string | number;
+
+function checkType(whatIsTheType: TStringOrNumber) {
+  if (typeof whatIsTheType === "string") {
+    console.log("This is String Type");
+  } else if (typeof whatIsTheType === "number") {
+    console.log("This is Number Type");
+  } else {
+    console.log("This isn't a String or Number Type");
+  }
+}
+checkType("Hello");
+checkType(7);
