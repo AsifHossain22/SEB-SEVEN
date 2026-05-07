@@ -37,3 +37,26 @@ function getProperty<T>(value: T): T {
 const user = getProperty({ id: 1, name: "John Doe", age: 21 });
 console.log(`Name: ${user.name} is a`, typeof user.name, "type");
 console.log(`Age: ${user.age} is a`, typeof user.name, "type");
+
+//? Problem - 5
+interface IBook {
+  title: string;
+  author: string;
+  publishedYear: number;
+}
+
+function toggleReadStatus(book: IBook): IBook & { isRead: boolean } {
+  return {
+    ...book,
+    isRead: true,
+  };
+}
+
+const book: IBook = {
+  title: "TypeScript Guide",
+  author: "Jane Doe",
+  publishedYear: 2024,
+};
+
+const bookTypescript = toggleReadStatus(book);
+console.log(bookTypescript);
