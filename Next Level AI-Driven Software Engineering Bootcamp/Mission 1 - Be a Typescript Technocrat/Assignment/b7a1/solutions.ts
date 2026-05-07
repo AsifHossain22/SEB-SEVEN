@@ -29,3 +29,11 @@ function checkType(whatIsTheType: TStringOrNumber) {
 }
 checkType("Hello");
 checkType(7);
+
+//? Problem - 4
+function getProperty<T>(value: T): T {
+  return value;
+}
+const user = getProperty({ id: 1, name: "John Doe", age: 21 });
+console.log(`Name: ${user.name} is a`, typeof user.name, "type");
+console.log(`Age: ${user.age} is a`, typeof user.name, "type");
