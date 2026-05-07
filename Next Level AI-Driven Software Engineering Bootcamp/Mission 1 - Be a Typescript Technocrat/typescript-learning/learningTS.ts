@@ -87,3 +87,8 @@ const SellerName: TSeller = {
   name: "Rahim",
   shopName: "Rahim's Store",
 };
+
+//* Ternary
+const stock = 0;
+
+const status = stock > 0 ? "Available" : "Out of stock";
