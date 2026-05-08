@@ -114,3 +114,8 @@ function processInput(input: unknown) {
 function throwError(msg: string): never {
   throw new Error(msg);
 }
+
+//* TypeUnknown
+let apiData: unknown = "Rahim";
+
+let userName = (apiData as string).length; // TypeAssertion
