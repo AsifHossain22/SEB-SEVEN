@@ -119,3 +119,14 @@ function throwError(msg: string): never {
 let apiData: unknown = "Rahim";
 
 let userName = (apiData as string).length; // TypeAssertion
+
+//* Interface - It can't declare type for 'Primitive Types'
+interface IProduct {
+  productName: string;
+  productPrice: number;
+}
+
+const product1: IProduct = {
+  productName: "Pressure Medicine",
+  productPrice: 500,
+};
