@@ -188,3 +188,17 @@ type StatusCheck = (typeof Status)[keyof typeof Status];
 const typeBosiye: StatusCheck = "PENDING";
 
 console.log("last", typeBosiye);
+
+//* ConditionalType
+type IsString<T> = T extends string ? "Yes" : "No";
+
+type A = IsString<string>;
+
+const xyz: A = "Yes";
+
+//* MappedType
+type TReadOnly<T> = {
+  readonly [K in keyof T]: T[K];
+};
+
+type TProductReadOnly = TReadOnly<TProduct>;
