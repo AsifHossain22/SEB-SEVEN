@@ -138,3 +138,17 @@ function identity<T>(value: T): T {
 // const paracetamol = identity("Napa");
 const paracetamol = identity(20);
 console.log(typeof paracetamol);
+
+//* GenericsWithInterface
+interface IApiResponse<T> {
+  success: boolean;
+  data: T;
+}
+// const res: IApiResponse<Array<string>> = {
+//   success: true,
+//   data: ["Rice", "Lentils"],
+// };
+const res: IApiResponse<string[]> = {
+  success: true,
+  data: ["Rice", "Lentils"],
+};
