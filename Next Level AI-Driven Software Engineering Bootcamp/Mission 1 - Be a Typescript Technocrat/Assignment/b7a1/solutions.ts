@@ -5,7 +5,6 @@ function filterEvenNumbers(numbers: number[]): number[] {
   });
 }
 const onlyEvenNumbers = filterEvenNumbers([1, 2, 3, 4, 5, 6]);
-console.log(onlyEvenNumbers);
 
 //? Problem - 2
 function reverseString(wordString: string): string {
@@ -13,18 +12,17 @@ function reverseString(wordString: string): string {
   return reversedWord;
 }
 const returnReverseString = reverseString("typescript");
-console.log(returnReverseString);
 
 //? Problem - 3
 type TStringOrNumber = string | number;
 
 function checkType(whatIsTheType: TStringOrNumber) {
   if (typeof whatIsTheType === "string") {
-    console.log("This is String Type");
+    return "This is String Type";
   } else if (typeof whatIsTheType === "number") {
-    console.log("This is Number Type");
+    return "This is Number Type";
   } else {
-    console.log("This isn't a String or Number Type");
+    return "This isn't a String or Number Type";
   }
 }
 checkType("Hello");
@@ -35,8 +33,8 @@ function getProperty<T>(value: T): T {
   return value;
 }
 const user = getProperty({ id: 1, name: "John Doe", age: 21 });
-console.log(`Name: ${user.name} is a`, typeof user.name, "type");
-console.log(`Age: ${user.age} is a`, typeof user.name, "type");
+// console.log(`Name: ${user.name} is a`, typeof user.name, "type");
+// console.log(`Age: ${user.age} is a`, typeof user.name, "type");
 
 //? Problem - 5
 interface IBook {
@@ -59,7 +57,6 @@ const book: IBook = {
 };
 
 const bookTypescript = toggleReadStatus(book);
-console.log(bookTypescript);
 
 //? Problem - 6
 class Person {
@@ -87,7 +84,6 @@ class Student extends Person {
 }
 
 const studentDetails = new Student("Alice", 20, "A");
-console.log(studentDetails.getDetails());
 
 //? Problem - 7
 function getIntersection(arrOne: number[], arrTwo: number[]): number[] {
@@ -96,4 +92,3 @@ function getIntersection(arrOne: number[], arrTwo: number[]): number[] {
   });
 }
 const matchedNumber = getIntersection([1, 3, 5, 7, 11, 25], [7, 9, 25, 40, 63]);
-console.log(matchedNumber);

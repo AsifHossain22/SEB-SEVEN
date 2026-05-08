@@ -92,3 +92,9 @@ const SellerName: TSeller = {
 const stock = 0;
 
 const status = stock > 0 ? "Available" : "Out of stock";
+
+//* Nullish
+const discountPrice = products.discount ?? 0; // Whether it's Null or Undefined
+
+//* OptionalChaining
+const sellerName = products?.name;
