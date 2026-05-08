@@ -130,3 +130,11 @@ const product1: IProduct = {
   productName: "Pressure Medicine",
   productPrice: 500,
 };
+
+//* Generics
+function identity<T>(value: T): T {
+  return value;
+}
+// const paracetamol = identity("Napa");
+const paracetamol = identity(20);
+console.log(typeof paracetamol);
