@@ -167,3 +167,24 @@ function getName<T extends IPersonal>(param: T): string {
 function getProperty<T, K extends keyof T>(obj: T, key: K) {
   return obj[key];
 }
+
+//* Enum
+enum OrderStatus {
+  Pending,
+  Shipped,
+  Delivered,
+}
+
+let orderStatus = OrderStatus.Delivered;
+
+const Status = {
+  PENDING: "PENDING",
+  SHIPPED: "SHIPPED",
+} as const;
+
+//* TypeCheck
+type StatusCheck = (typeof Status)[keyof typeof Status];
+
+const typeBosiye: StatusCheck = "PENDING";
+
+console.log("last", typeBosiye);
