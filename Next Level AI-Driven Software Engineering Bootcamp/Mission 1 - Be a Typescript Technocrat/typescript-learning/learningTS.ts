@@ -202,3 +202,15 @@ type TReadOnly<T> = {
 };
 
 type TProductReadOnly = TReadOnly<TProduct>;
+
+//* PartialType
+type PartialProduct = Partial<TProduct>;
+
+//* RequiredType
+type RequiredProduct = Required<PartialProduct>;
+
+//* PickType
+type PickProduct = Pick<TProduct, "productName">;
+
+//* OmitType
+type OmitProduct = Omit<TProduct, "productManufacturing">;
