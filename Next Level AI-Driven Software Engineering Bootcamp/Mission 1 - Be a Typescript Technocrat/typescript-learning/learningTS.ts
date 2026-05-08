@@ -152,3 +152,18 @@ const res: IApiResponse<string[]> = {
   success: true,
   data: ["Rice", "Lentils"],
 };
+
+//* Constraints
+interface IPersonal {
+  name: string;
+  add: string;
+}
+
+function getName<T extends IPersonal>(param: T): string {
+  return param?.name;
+}
+
+//* ConstraintsWithKeyOfOperator
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
