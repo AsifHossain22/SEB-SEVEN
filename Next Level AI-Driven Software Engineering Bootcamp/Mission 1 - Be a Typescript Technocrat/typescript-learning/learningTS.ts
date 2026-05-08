@@ -98,3 +98,14 @@ const discountPrice = products.discount ?? 0; // Whether it's Null or Undefined
 
 //* OptionalChaining
 const sellerName = products?.name;
+
+// TypeAssertion - Unknown
+let userInput: unknown;
+
+function processInput(input: unknown) {
+  // (userInput as string).toUpperCase(); // TypeAssertion
+
+  if (typeof input === "string") {
+    input.toUpperCase();
+  }
+}
