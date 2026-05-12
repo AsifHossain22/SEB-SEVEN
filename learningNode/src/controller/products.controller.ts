@@ -1,6 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { readProducts } from "../service/products.service";
-import type { IProduct } from "../types/product.type";
+import { insertProduct, readProducts } from "../service/products.service";
 import { parseBody } from "../utility/parseBody";
 
 export const productsController = async (
@@ -33,26 +32,34 @@ export const productsController = async (
   } // GetSingleProduct - GetMethod
   else if (method === "GET" && id !== null) {
     const products = readProducts();
-    const singleProduct = products.find((p: IProduct) => p.id === id);
+    // const singleProduct = products.find((p: IProduct) => p.id === id);
     // console.log(singleProduct);
 
     res.writeHead(200, { "content-type": "application/json" });
     res.end(
       JSON.stringify({
         message: "Single Product received successfully!",
-        data: singleProduct,
+        // data: singleProduct,
       }),
     );
   } // PostSingleProduct - PostMethod
   else if (method === "POST" && url === "/products") {
     const body = await parseBody(req);
-    console.log("Body: ", body);
-
+    // console.log("Body: ", body);
+    const products = readProducts();
+    const newProduct = {
+      id: Date.now(),
+      ...body,
+    };
+    // console.log(newProduct);
+    products.push(newProduct);
+    // console.log(products);
+    insertProduct(products);
     res.writeHead(200, { "content-type": "application/json" });
     res.end(
       JSON.stringify({
         message: "Single Product created successfully!",
-        // data: singleProduct,
+        data: products,
       }),
     );
   }

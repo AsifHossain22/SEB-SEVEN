@@ -40,5 +40,11 @@
     "productName": "Gaming Chair",
     "description": "Comfortable gaming chair with adjustable armrests and lumbar support.",
     "price": 4500
+  },
+  {
+    "id": 1778593103100,
+    "name": "Product Test Final Name",
+    "description": "Product Test Final Description",
+    "price": 1500
   }
 ]
