@@ -10,7 +10,7 @@ export const readProducts = () => {
 
   const products = fs.readFileSync(filePath, 'utf-8');
   //   console.log(products.toString());
-
+  // console.log(products);
   //   console.log(JSON.parse(products));
   return JSON.parse(products);
 };
