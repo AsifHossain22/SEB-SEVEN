@@ -42,9 +42,9 @@
     "price": 4500
   },
   {
-    "id": 1778593103100,
-    "name": "Product Test Final Name",
-    "description": "Product Test Final Description",
-    "price": 1500
+    "id": 8,
+    "name": "Test Product Name",
+    "description": "Test Product Description",
+    "price": 2500
   }
 ]
