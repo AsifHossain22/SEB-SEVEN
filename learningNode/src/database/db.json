@@ -10,35 +10,5 @@
     "productName": "Mechanical Keyboard",
     "description": "RGB backlit mechanical keyboard with blue switches for gaming and typing.",
     "price": 1200
-  },
-  {
-    "id": 3,
-    "productName": "Bluetooth Headphones",
-    "description": "Noise-cancelling over-ear headphones with deep bass and 20-hour battery backup.",
-    "price": 1800
-  },
-  {
-    "id": 4,
-    "productName": "Smart Watch",
-    "description": "Fitness tracking smartwatch with heart-rate monitor and sleep tracking features.",
-    "price": 2500
-  },
-  {
-    "id": 5,
-    "productName": "USB-C Charger",
-    "description": "Fast charging 30W USB-C wall adapter compatible with smartphones and tablets.",
-    "price": 700
-  },
-  {
-    "id": 6,
-    "productName": "Portable SSD",
-    "description": "High-speed 1TB portable SSD for secure file storage and quick data transfer.",
-    "price": 3200
-  },
-  {
-    "id": 7,
-    "productName": "Gaming Chair",
-    "description": "Comfortable gaming chair with adjustable armrests and lumbar support.",
-    "price": 4500
   }
 ]

@@ -36,6 +36,16 @@ export const productsController = async (
     const singleProduct = products.find((p: IProduct) => p.id === id);
     // console.log(singleProduct);
 
+    if (!singleProduct) {
+      res.writeHead(404, { 'content-type': 'application/json' });
+      res.end(
+        JSON.stringify({
+          message: 'Product not found!',
+          data: null,
+        }),
+      );
+    }
+
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(
       JSON.stringify({
