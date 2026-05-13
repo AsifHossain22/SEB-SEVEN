@@ -94,4 +94,39 @@ export const productsController = async (
       }),
     );
   }
+  // DeleteMethod
+  else if (method === 'DELETE' && id !== null) {
+    const products = readProducts();
+
+    const index = products.findIndex((p: IProduct) => p.id == id);
+
+    if (index < 0) {
+      res.writeHead(404, { 'content-type': 'application/json' });
+      res.end(
+        JSON.stringify({
+          message: 'Product not found!',
+          data: null,
+        }),
+      );
+    }
+
+    /*
+    const arr = ["1", "2", "3", "4", "5"] 
+    arr.splice(2,1);
+    console.log(arr)
+    */
+
+    products.splice(index, 1);
+    // console.log(products);
+
+    insertProduct(products);
+
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(
+      JSON.stringify({
+        message: 'Product deleted successfully!',
+        data: null,
+      }),
+    );
+  }
 };
