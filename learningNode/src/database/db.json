@@ -1,14 +1,37 @@
 [
   {
     "id": 1,
-    "productName": "Wireless Mouse",
-    "description": "Ergonomic wireless mouse with adjustable DPI and long battery life.",
-    "price": 500
+    "languageName": "JavaScript",
+    "languageDescription": "Popular scripting language mainly used for web development and interactive websites.",
+    "creator": "Brendan Eich",
+    "releaseYear": 1995
   },
   {
     "id": 2,
-    "productName": "Mechanical Keyboard",
-    "description": "RGB backlit mechanical keyboard with blue switches for gaming and typing.",
-    "price": 1200
+    "languageName": "TypeScript",
+    "languageDescription": "A superset of JavaScript that adds static typing and modern development features.",
+    "creator": "Microsoft",
+    "releaseYear": 2012
+  },
+  {
+    "id": 3,
+    "languageName": "Python",
+    "languageDescription": "Widely used programming language for AI, machine learning, automation and web development.",
+    "creator": "Guido van Rossum",
+    "releaseYear": 1991
+  },
+  {
+    "id": 4,
+    "languageName": "C++",
+    "languageDescription": "Powerful language used for system programming, game development and high-performance applications.",
+    "creator": "Bjarne Stroustrup",
+    "releaseYear": 1985
+  },
+  {
+    "id": 5,
+    "languageName": "Java",
+    "languageDescription": "Object-oriented programming language widely used for enterprise and Android development.",
+    "creator": "James Gosling",
+    "releaseYear": 1995
   }
 ]
