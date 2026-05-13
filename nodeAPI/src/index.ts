@@ -1,8 +1,9 @@
 import { createServer } from 'http';
 import { sendResponse } from './utils/utils';
 import { orderRoute } from './routes/order.route';
+import type { TReq } from './types/types';
 
-const server = createServer((req, res) => {
+const server = createServer(async (req, res) => {
   const url = req.url ?? '/';
 
   if (url === '/') {
@@ -15,7 +16,7 @@ const server = createServer((req, res) => {
   }
 
   if (url.startsWith('/orders')) {
-    orderRoute(req, res);
+    await orderRoute(req as TReq, res);
     return;
   }
 

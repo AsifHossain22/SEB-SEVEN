@@ -35,7 +35,7 @@ class OrderService {
   }
 
   // POST - Method: CreateData
-  async create(order: Omit<TOrder, 'id'>) {
+  async create(order: Omit<TOrder, 'id'>): Promise<TOrder> {
     const data = await this.readData(); // ReadData
 
     // CreateNewData
@@ -47,6 +47,8 @@ class OrderService {
     data.push(newOrder); // PushData
 
     await this.writeData(data); // WriteData
+
+    return newOrder;
   }
 
   // PUT / PATCH - Method: UpdateData
@@ -75,7 +77,7 @@ class OrderService {
 
     if (index === -1) return false;
 
-    data.slice(index, 1);
+    data.splice(index, 1);
 
     await this.writeData(data);
     return true;

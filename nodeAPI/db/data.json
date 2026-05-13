@@ -2,9 +2,9 @@
   {
     "id": "1",
     "customerName": "Ahmed Ali",
-    "foodName": "Chicken Kabsa",
-    "quantity": 2,
-    "price": 25
+    "foodName": "Chicken Shawarma",
+    "quantity": 4,
+    "price": 24
   },
   {
     "id": "2",
@@ -16,9 +16,9 @@
   {
     "id": "3",
     "customerName": "Omar Hassan",
-    "foodName": "Chicken Mandi",
+    "foodName": "Chicken Grill",
     "quantity": 1,
-    "price": 30
+    "price": 20
   },
   {
     "id": "4",
@@ -33,12 +33,5 @@
     "foodName": "Mixed Grill",
     "quantity": 2,
     "price": 40
-  },
-  {
-    "customerName": "Customer Name 1",
-    "foodName": "Falafel",
-    "price": 100,
-    "quantity": 3,
-    "id": "74"
   }
 ]

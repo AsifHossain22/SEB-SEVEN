@@ -1,4 +1,4 @@
-import type { TRes } from '../types/types';
+import type { TReq, TRes } from '../types/types';
 
 export function sendResponse<T>(
   res: TRes,
@@ -14,3 +14,34 @@ export function sendResponse<T>(
     }),
   );
 }
+
+export const extractRequestInfo = async <T>(req: TReq) => {
+  const params = req.url?.split('/').filter(Boolean) ?? [];
+  const body =
+    req.method === 'POST' || req.method === 'PUT' || req.method === 'PATCH'
+      ? await parseBody<T>(req)
+      : null;
+  return {
+    url: req.url ?? '/',
+    method: req.method,
+    params: params,
+    body: body,
+  };
+};
+
+const parseBody = async <T>(req: TReq): Promise<T | null> => {
+  return new Promise((resole, reject) => {
+    let body = '';
+
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      try {
+        resole(JSON.parse(body));
+      } catch (error) {
+        reject(new Error('Invalid data!'));
+      }
+    });
+  });
+};
