@@ -47,13 +47,14 @@ app.get('/', (req: Request, res: Response) => {
   // res.send('Hello Express Server!');
 
   res.status(200).json({
+    success: true,
     message: 'Hello Express Server!',
     author: 'Next Level Express',
   });
 });
 
 // POST
-app.post('/', async (req: Request, res: Response) => {
+app.post('/api/users', async (req: Request, res: Response) => {
   // console.log(req.body);
 
   const { name, email, password, age } = req.body;
@@ -69,11 +70,69 @@ app.post('/', async (req: Request, res: Response) => {
     // console.log(result);
 
     res.status(201).json({
+      success: true,
       message: 'User created successfully!',
       data: result.rows[0],
     });
   } catch (error: any) {
     res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error,
+    });
+  }
+});
+
+// GET - GetAllUsers
+app.get('/api/users', async (req: Request, res: Response) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM users
+      `);
+    res.status(200).json({
+      success: true,
+      message: 'All users found successfully!',
+      data: result.rows,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error,
+    });
+  }
+});
+
+// GET - GetSingleData
+app.get('/api/users/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  // console.log(id);
+
+  try {
+    const result = await pool.query(
+      `
+      SELECT * FROM users WHERE id = $1
+      `,
+      [id],
+    );
+    // console.log(result);
+
+    if (result.rows.length === 0) {
+      res.status(500).json({
+        success: false,
+        message: 'User not found!',
+        data: null,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'User found successfully!',
+      data: result.rows[0],
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
       message: error.message,
       error: error,
     });
