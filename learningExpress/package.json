@@ -12,12 +12,14 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "tsx": "^4.21.0",
     "@types/express": "^5.0.6",
+    "@types/pg": "^8.20.0",
     "npx": "^10.2.2",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
   }
 }
