@@ -7,140 +7,44 @@ const LABELS = [
   { id: 'l6', name: 'Research', color: '#14b8a6' },
 ];
 
-const COVER_COLORS = [
-  '#0d1117',
-  '#0f3460',
-  '#1a1a2e',
-  '#064e3b',
-  '#7c3aed',
-  '#831843',
-  '#92400e',
-  '#1e3a5f',
-  '#6b21a8',
-  '#be123c',
-  '#0f766e',
-  '#713f12',
-  '#1e40af',
-  '#166534',
-  '#5b21b6',
-  '#9a3412',
-  '#065f46',
-  '#78350f',
-  '#1e293b',
-  '#312e81',
-];
+const COVER_COLORS = ['#ef4444', '#22c55e', '#3b82f6', '#a855f7', '6b7280'];
 
 // MainDataObject
 let state = {
   boardTitle: 'Product Roadmap',
   listOrder: ['l-1', 'l-2', 'l-3', 'l-4'],
   lists: {
-    'l-1': { id: 'l-1', title: 'Backlog', cardIds: ['c-1', 'c-2', 'c-3'] },
-    'l-2': { id: 'l-2', title: 'In Progress', cardIds: ['c-4', 'c-5'] },
-    'l-3': { id: 'l-3', title: 'In Review', cardIds: ['c-6'] },
-    'l-4': { id: 'l-4', title: 'Done', cardIds: ['c-7', 'c-8'] },
+    'l-1': { id: 'l-1', title: 'To Do', cardIds: ['c-1'] },
+    'l-2': { id: 'l-2', title: 'Doing', cardIds: ['c-2'] },
+    'l-3': { id: 'l-3', title: 'Done', cardIds: ['c-3'] },
   },
   cards: {
     'c-1': {
       id: 'c-1',
-      title: 'Define product vision and OKRs',
-      description:
-        'Outline the product vision for Q3 and set key results for each team.',
-      labels: ['l1', 'l6'],
-      dueDate: '2025-07-15',
-      checklist: [
-        { id: 'ci-1', text: 'Research competitors', done: true },
-        { id: 'ci-2', text: 'Draft vision document', done: true },
-        { id: 'ci-3', text: 'Present to stakeholders', done: false },
-      ],
+      title: 'Title: To Do',
+      description: 'Description: To Do',
+      labels: ['l1'],
+      dueDate: '2026-10-1',
+      checklist: [{ id: 'ci-1', text: 'Checklist: To Do', done: true }],
       coverColor: null,
     },
     'c-2': {
       id: 'c-2',
-      title: 'User research interviews',
-      description:
-        'Schedule and conduct 10 user interviews for the new onboarding flow.',
-      labels: ['l6'],
-      dueDate: '2025-07-20',
-      checklist: [
-        { id: 'ci-4', text: 'Create interview script', done: true },
-        { id: 'ci-5', text: 'Recruit participants', done: false },
-        { id: 'ci-6', text: 'Conduct interviews', done: false },
-        { id: 'ci-7', text: 'Synthesize findings', done: false },
-      ],
-      coverColor: '#7c3aed',
+      title: 'Title: Doing',
+      description: 'Description: Doing',
+      labels: ['l2'],
+      dueDate: '2026-10-1',
+      checklist: [{ id: 'ci-2', text: 'Checklist: Doing', done: true }],
+      coverColor: null,
     },
     'c-3': {
       id: 'c-3',
-      title: 'Update design system tokens',
-      description: 'Align design tokens with the new brand guidelines.',
-      labels: ['l1'],
-      dueDate: null,
-      checklist: [],
+      title: 'Title: Done',
+      description: 'Description: Done',
+      labels: ['l3'],
+      dueDate: '2026-10-1',
+      checklist: [{ id: 'ci-3', text: 'Checklist: Done', done: true }],
       coverColor: null,
-    },
-    'c-4': {
-      id: 'c-4',
-      title: 'Build authentication module',
-      description:
-        'Implement OAuth2 + JWT based authentication with refresh tokens.',
-      labels: ['l2', 'l3'],
-      dueDate: '2025-07-10',
-      checklist: [
-        { id: 'ci-8', text: 'Setup OAuth provider', done: true },
-        { id: 'ci-9', text: 'Implement JWT', done: true },
-        { id: 'ci-10', text: 'Write unit tests', done: false },
-      ],
-      coverColor: '#0f3460',
-    },
-    'c-5': {
-      id: 'c-5',
-      title: 'Redesign onboarding screens',
-      description: 'Create new onboarding UI based on user research findings.',
-      labels: ['l1', 'l2'],
-      dueDate: '2025-07-25',
-      checklist: [
-        { id: 'ci-11', text: 'Wireframes', done: true },
-        { id: 'ci-12', text: 'High-fidelity mockups', done: false },
-      ],
-      coverColor: '#1e3a5f',
-    },
-    'c-6': {
-      id: 'c-6',
-      title: 'API rate limiting implementation',
-      description: 'Add rate limiting middleware to all public API endpoints.',
-      labels: ['l2', 'l4'],
-      dueDate: '2025-07-08',
-      checklist: [
-        { id: 'ci-13', text: 'Choose algorithm', done: true },
-        { id: 'ci-14', text: 'Implement middleware', done: true },
-        { id: 'ci-15', text: 'Load test', done: false },
-      ],
-      coverColor: null,
-    },
-    'c-7': {
-      id: 'c-7',
-      title: 'Setup CI/CD pipeline',
-      description:
-        'GitHub Actions workflow for automated testing and deployment.',
-      labels: ['l2', 'l5'],
-      dueDate: '2025-06-30',
-      checklist: [
-        { id: 'ci-16', text: 'Configure GitHub Actions', done: true },
-        { id: 'ci-17', text: 'Setup staging env', done: true },
-        { id: 'ci-18', text: 'Setup production deploy', done: true },
-      ],
-      coverColor: null,
-    },
-    'c-8': {
-      id: 'c-8',
-      title: 'Define brand color palette',
-      description:
-        'Finalize the primary, secondary, and semantic color tokens.',
-      labels: ['l1', 'l5'],
-      dueDate: '2025-06-25',
-      checklist: [],
-      coverColor: '#064e3b',
     },
   },
   openCardId: null,
@@ -1009,7 +913,7 @@ function removeCover() {
   document.getElementById('coverPickerPanel').classList.add('hidden');
 }
 
-// মডালে কার্ড ডিলিট | Delete card from modal
+// DeleteCardFromModal
 function deleteCurrentCard() {
   if (!modalCardId) return;
   if (!confirm('Delete this card?')) return;
@@ -1050,18 +954,18 @@ document
 // Notification
 const NOTIFS = [
   {
-    msg: 'Card "Build auth module" is due soon',
-    time: '2h ago',
-    color: 'var(--red)',
-  },
-  {
-    msg: 'You were mentioned in "Design System"',
-    time: '5h ago',
+    msg: 'Created To Do',
+    time: '1m ago',
     color: 'var(--brand)',
   },
   {
-    msg: '"User research" moved to In Review',
-    time: '1d ago',
+    msg: 'Moved to Doing',
+    time: '1m ago',
+    color: 'var(--yellow)',
+  },
+  {
+    msg: 'Task Done',
+    time: '1m ago',
     color: 'var(--green)',
   },
 ];
