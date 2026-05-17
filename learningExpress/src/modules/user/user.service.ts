@@ -6,8 +6,9 @@ import bcrypt from 'bcryptjs';
 const createUserIntoDB = async (payload: IUser) => {
   const { name, email, password, age } = payload;
 
+  // HashPassword
   const hashPassword = await bcrypt.hash(password, 10);
-  console.log(hashPassword);
+  // console.log(hashPassword);
 
   const result = await pool.query(
     `
@@ -24,9 +25,11 @@ const createUserIntoDB = async (payload: IUser) => {
 
 // GetAllUsers - GET
 const getAllUsersFromDB = async () => {
-  const result = await pool.query(`
-      SELECT * FROM users
-      `);
+  const result = await pool.query(
+    `
+      SELECT id, name, email, age FROM users
+      `,
+  );
   return result;
 };
 
