@@ -389,6 +389,9 @@ body {
   border-radius: 5px;
   white-space: nowrap;
 }
+#dueDateText {
+  margin-bottom: 5px;
+}
 .badge-gray {
   background: var(--bg4);
   color: var(--text2);
@@ -764,7 +767,7 @@ body {
   padding: 12px 20px 20px;
 }
 .modal-sidebar {
-  width: 160px;
+  width: 240px;
   flex-shrink: 0;
   padding: 12px 12px 20px;
   border-left: 1px solid var(--border);

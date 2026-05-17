@@ -916,19 +916,39 @@ function removeCover() {
 // DeleteCardFromModal
 function deleteCurrentCard() {
   if (!modalCardId) return;
-  if (!confirm('Delete this card?')) return;
+
+  const confirmed = confirm('Delete this card?');
+  if (!confirmed) return;
+
+  // FindTheList
   const listId = state.listOrder.find(lid =>
     state.lists[lid]?.cardIds.includes(modalCardId),
   );
+
   if (listId) {
+    // RemoveCardIDFromList
     state.lists[listId].cardIds = state.lists[listId].cardIds.filter(
       id => id !== modalCardId,
     );
-    document.getElementById('card-' + modalCardId)?.remove();
+
+    // RemoveCardElementFromDOM
+    const cardEl = document.getElementById(`card-${modalCardId}`);
+    if (cardEl) cardEl.remove();
+
     updateListCount(listId);
   }
+
+  // RemoveCardData
   delete state.cards[modalCardId];
+
+  // ResetModalCard
+  modalCardId = null;
+
+  // CloseModal
   closeModal();
+
+  // SaveStateIfNeeded
+  saveBoard?.();
 }
 
 // AutoSaveModalTitle
