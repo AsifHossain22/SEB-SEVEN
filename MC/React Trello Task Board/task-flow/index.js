@@ -7,12 +7,12 @@ const LABELS = [
   { id: 'l6', name: 'Research', color: '#14b8a6' },
 ];
 
-const COVER_COLORS = ['#ef4444', '#22c55e', '#3b82f6', '#a855f7', '6b7280'];
+const COVER_COLORS = ['#ef4444', '#22c55e', '#3b82f6', '#a855f7', '#6b7280'];
 
 // MainDataObject
 let state = {
   boardTitle: 'Product Roadmap',
-  listOrder: ['l-1', 'l-2', 'l-3', 'l-4'],
+  listOrder: ['l-1', 'l-2', 'l-3'],
   lists: {
     'l-1': { id: 'l-1', title: 'To Do', cardIds: ['c-1'] },
     'l-2': { id: 'l-2', title: 'Doing', cardIds: ['c-2'] },
