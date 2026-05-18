@@ -50,6 +50,27 @@ let state = {
   openCardId: null,
 };
 
+// LocalStorage Key
+const STORAGE_KEY = 'taskflow-board-data';
+
+// Save Board State
+function saveBoard() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// Load Board State
+function loadBoard() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (!saved) return;
+
+  try {
+    state = JSON.parse(saved);
+  } catch (err) {
+    console.error('Failed to load board:', err);
+  }
+}
+
 // IDCounterForNewItems
 let idCounter = 100;
 function uid() {
@@ -379,6 +400,8 @@ function onDropZoneDrop(e) {
 
   updateListCount(srcListId); // UpdateSourceCount
   updateListCount(destListId); // UpdateDestCount
+
+  saveBoard();
 }
 
 //GetDragAfterCard
@@ -438,9 +461,9 @@ function handleAddCardKey(e, listId) {
 function submitAddCard(listId) {
   const inp = document.getElementById('addInput-' + listId);
   const title = inp.value.trim();
+
   if (!title) return;
 
-  // NewCardObject
   const card = {
     id: uid(),
     title,
@@ -450,10 +473,10 @@ function submitAddCard(listId) {
     checklist: [],
     coverColor: null,
   };
-  state.cards[card.id] = card; // AddToState
-  state.lists[listId].cardIds.push(card.id); // AddToList
 
-  // DOMUpdate
+  state.cards[card.id] = card;
+  state.lists[listId].cardIds.push(card.id);
+
   const zone = document.getElementById('cards-' + listId);
   const tmp = document.createElement('div');
   tmp.innerHTML = buildCardHtml(card, listId);
@@ -462,22 +485,33 @@ function submitAddCard(listId) {
   bindCardDragEvents(newEl);
   updateListCount(listId);
   hideAddCard(listId);
+
+  saveBoard();
 }
 
 // DeleteCard
 function deleteCard(cardId, listId) {
   if (!confirm('Delete this card?')) return;
+
   delete state.cards[cardId];
+
   state.lists[listId].cardIds = state.lists[listId].cardIds.filter(
     id => id !== cardId,
   );
+
   document.getElementById('card-' + cardId)?.remove();
+
   updateListCount(listId);
+
+  saveBoard();
 }
 
 // UpdateListTitle
 function updateListTitle(listId, value) {
-  if (value.trim()) state.lists[listId].title = value.trim();
+  if (value.trim()) {
+    state.lists[listId].title = value.trim();
+    saveBoard();
+  }
 }
 
 // ToggleListMenu
@@ -521,13 +555,19 @@ function startRenameList(listId) {
 // DeleteList
 function deleteList(listId) {
   closeAllDropdowns();
+
   const list = state.lists[listId];
+
   if (!confirm(`Delete list "${list.title}" and all its cards?`)) return;
-  list.cardIds.forEach(cid => delete state.cards[cid]); // DeleteAllCards
+
+  list.cardIds.forEach(cid => delete state.cards[cid]);
   delete state.lists[listId];
   state.listOrder = state.listOrder.filter(id => id !== listId);
+
   renderBoard();
   bindDragEvents();
+
+  saveBoard();
 }
 
 // ShowAddListForm
@@ -548,13 +588,24 @@ function hideAddList() {
 function submitAddList() {
   const inp = document.getElementById('newListInput');
   const title = inp.value.trim();
+
   if (!title) return;
+
   const id = uid();
-  state.lists[id] = { id, title, cardIds: [] };
+
+  state.lists[id] = {
+    id,
+    title,
+    cardIds: [],
+  };
+
   state.listOrder.push(id);
+
   renderBoard();
   bindDragEvents();
   hideAddList();
+
+  saveBoard();
 }
 
 document
@@ -664,10 +715,16 @@ function startEditDesc() {
 // SaveDescription
 function saveDesc() {
   if (!modalCardId) return;
+
   const val = document.getElementById('descEdit').value.trim();
+
   state.cards[modalCardId].description = val;
+
   renderModalDesc(state.cards[modalCardId]);
+
   refreshCard(modalCardId);
+
+  saveBoard();
 }
 
 // CancelDescription
@@ -729,12 +786,20 @@ function renderLabelPicker() {
 // ToggleLabel
 function toggleLabel(labelId) {
   const card = state.cards[modalCardId];
+
   const set = new Set(card.labels || []);
-  set.has(labelId) ? set.delete(labelId) : set.add(labelId); // Toggle
+
+  set.has(labelId) ? set.delete(labelId) : set.add(labelId);
+
   card.labels = [...set];
+
   renderModalLabels(card);
+
   renderLabelPicker();
+
   refreshCard(modalCardId);
+
+  saveBoard();
 }
 
 // RenderChecklist
@@ -779,18 +844,29 @@ function renderModalChecklist(card) {
 // HandleToggleCheck
 function toggleCheck(itemId) {
   const card = state.cards[modalCardId];
+
   const item = card.checklist.find(i => i.id === itemId);
+
   if (item) item.done = !item.done;
+
   renderModalChecklist(card);
+
   refreshCard(modalCardId);
+
+  saveBoard();
 }
 
 // DeleteCheckItem
 function deleteCheckItem(itemId) {
   const card = state.cards[modalCardId];
+
   card.checklist = card.checklist.filter(i => i.id !== itemId);
+
   renderModalChecklist(card);
+
   refreshCard(modalCardId);
+
+  saveBoard();
 }
 
 // ShowAddCheckItem
@@ -808,14 +884,28 @@ function hideAddCheckInput() {
 // SubmitAddCheckItem
 function submitCheckItem() {
   const inp = document.getElementById('checkItemInput');
+
   const text = inp.value.trim();
+
   if (!text) return;
+
   const card = state.cards[modalCardId];
-  card.checklist.push({ id: uid(), text, done: false });
+
+  card.checklist.push({
+    id: uid(),
+    text,
+    done: false,
+  });
+
   renderModalChecklist(card);
+
   refreshCard(modalCardId);
+
   inp.value = '';
+
   inp.focus();
+
+  saveBoard();
 }
 document.getElementById('checkItemInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') submitCheckItem();
@@ -851,17 +941,27 @@ function renderModalDueDate(card) {
 // SetModalDueDate
 function setDueDate(val) {
   if (!modalCardId) return;
+
   state.cards[modalCardId].dueDate = val || null;
+
   renderModalDueDate(state.cards[modalCardId]);
+
   refreshCard(modalCardId);
+
+  saveBoard();
 }
 
 // ClearModalDueDate
 function clearDueDate() {
   if (!modalCardId) return;
+
   state.cards[modalCardId].dueDate = null;
+
   renderModalDueDate(state.cards[modalCardId]);
+
   refreshCard(modalCardId);
+
+  saveBoard();
 }
 
 // ToggleCoverPicker
@@ -896,21 +996,35 @@ function renderCoverPicker() {
 // SetCover
 function setCover(color) {
   if (!modalCardId) return;
+
   state.cards[modalCardId].coverColor = color;
+
   const coverEl = document.getElementById('modalCover');
+
   coverEl.style.background = color;
+
   coverEl.classList.remove('hidden');
+
   refreshCard(modalCardId);
+
   renderCoverPicker();
+
+  saveBoard();
 }
 
 // RemoveCover
 function removeCover() {
   if (!modalCardId) return;
+
   state.cards[modalCardId].coverColor = null;
+
   document.getElementById('modalCover').classList.add('hidden');
+
   refreshCard(modalCardId);
+
   document.getElementById('coverPickerPanel').classList.add('hidden');
+
+  saveBoard();
 }
 
 // DeleteCardFromModal
@@ -969,22 +1083,24 @@ document
   .addEventListener('change', function () {
     state.boardTitle = this.value.trim() || state.boardTitle;
     this.value = state.boardTitle;
+
+    saveBoard();
   });
 
 // Notification
 const NOTIFS = [
   {
-    msg: 'Created To Do',
+    msg: 'Create Your TaskFlow Board',
     time: '1m ago',
     color: 'var(--brand)',
   },
   {
-    msg: 'Moved to Doing',
+    msg: 'Set Due Dates & Reminders',
     time: '1m ago',
     color: 'var(--yellow)',
   },
   {
-    msg: 'Task Done',
+    msg: 'Organize Tasks with Labels',
     time: '1m ago',
     color: 'var(--green)',
   },
@@ -1055,8 +1171,27 @@ document.addEventListener('keydown', e => {
 });
 
 // Init - AppStart
+loadBoard();
+
 renderBoard(); // RenderBoard
 bindDragEvents(); // BindDragEvents
+
+// Reset Board To Default
+function resetBoard(event) {
+  event.preventDefault();
+
+  const confirmed = confirm(
+    'Reset board to default and remove all saved data?',
+  );
+
+  if (!confirmed) return;
+
+  // Remove saved board
+  localStorage.removeItem(STORAGE_KEY);
+
+  // Reload page
+  location.reload();
+}
 
 // Footer
 document.body.insertAdjacentHTML(
