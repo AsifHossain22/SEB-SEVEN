@@ -675,7 +675,7 @@ body {
   transition: 0.1s;
   border: none;
   background: transparent;
-  width: 100%;
+  width: 100px;
   font-family: inherit;
 }
 .dropdown-item:hover {
